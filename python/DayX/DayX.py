@@ -3,7 +3,7 @@
 # First attempt at doing Day X of Advent of Code 2024
 
 import time
-import numpy
+import numpy as np
 
 
 def read_input(file_name):
@@ -19,14 +19,14 @@ def read_input(file_name):
             counter += 1
             final_count.append(0)
 
-    final_count = numpy.asarray(final_count)
+    final_count = np.asarray(final_count)
 
     return final_count
 
 
 def return_max(input_list):
-    max_cal = numpy.max(input_list)
-    where = numpy.where(input_list == max_cal)[0][0]
+    max_cal = np.max(input_list)
+    where = np.where(input_list == max_cal)[0][0]
 
     return [int(max_cal), where]
 
@@ -34,7 +34,7 @@ def return_max(input_list):
 def return_top3(input_list):
     sorted_list = sorted(input_list, key=lambda x: -x)
     cal_sum = sum(sorted_list[0:3])
-    where_three = numpy.where(input_list > sorted_list[3])[0]
+    where_three = np.where(input_list > sorted_list[3])[0]
 
     return [int(cal_sum), where_three]
 
