@@ -31,16 +31,14 @@ def move(input_list, row_id, column_id, max_size=137):
             'ul': [input_list[row_id - 1, column_id - 1], input_list[row_id - 2, column_id - 2],
                    input_list[row_id - 3, column_id - 3]] if column_id > 2 and row_id > 2 else None,}
 
+
 def move_X(input_list, row_id, column_id, max_size=138):
     possible_cross = [['M', 'S'], ['S', 'M']]
     if 0 < row_id < max_size and 0 < column_id < max_size:
         if (([input_list[row_id - 1, column_id - 1], input_list[row_id + 1, column_id + 1]] in possible_cross)
                 and ([input_list[row_id + 1, column_id - 1], input_list[row_id - 1, column_id + 1]] in possible_cross)):
             return 1
-        else:
-            return 0
-    else:
-        return 0
+    return 0
 
 
 def navigate(input_list):
@@ -56,18 +54,15 @@ def navigate(input_list):
                         match val:
                             case ['M', 'A', 'S']:
                                 count += 1
-                            case None:
-                                pass
+
                 case 'A':
                     x_count += move_X(input_list, row_id, column_id, max_size=input_shape-1)
-                case _:
-                    continue
 
     return count, x_count
 
 
 def main():
-    ## Part 1
+    ## Part 1 + 2
     #b = read_input("Day4_test_input.txt")
     b = read_input("Day4_input.txt")
     answer, answer2 = navigate(b)
