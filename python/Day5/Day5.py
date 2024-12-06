@@ -36,8 +36,6 @@ def read_input(file_name):
 
         master_rules[sub_a] = temp
 
-    # print([len(val) for val in master_rules.values()])
-    # master_rules = dict(sorted(master_rules.items(), key=lambda item: len(master_rules) - len(item[1])))
     return rules, updates, master_rules
 
 
@@ -72,28 +70,8 @@ def return_middle(line, rules=None):
 
         line = sorted(line, key=lambda x: sum(b in rules.get(x, set()) for b in line))
 
-        #
-        # tracker = line.copy()
-        # new_line = []
-        # for key in rules:
-        #     if key in line:
-        #         times = line.count(key)
-        #         for _ in range(times):
-        #             new_line.append(key)
-        #             tracker.pop(tracker.index(key))
-        #
-        # for chara in tracker:
-        #     new_line.append(chara)
-        #
-        # assert len(new_line) == len(line)
-        #
-        # line = new_line
-        #
-        # good.append(line)
         # print(f'after: {line}')
 
-    # print(len(line))
-    # print(int(len(line)/2))
     pos = len(line) // 2
     return line[pos]
 
