@@ -30,10 +30,13 @@ def process(result, values, concatenation=False):
     possible_operators = [0, 1, 2] if concatenation else [0, 1]
     for set_of_operators in product(possible_operators, repeat=len(values)-1):
         test_count = values[0]
-        performed_calc= f'{values[0]}'
+        # performed_calc= f'{values[0]}'
         for op_id, number in enumerate(values[1:]):
             test_count = operators[set_of_operators[op_id]](test_count, number)
-            performed_calc = f'{performed_calc} {operator_names[set_of_operators[op_id]]} {number}'
+            # performed_calc = f'{performed_calc} {operator_names[set_of_operators[op_id]]} {number}'
+
+            if test_count > result:
+                break
 
         if test_count == result:
             # print(f'{performed_calc} = {test_count}, {result}')
