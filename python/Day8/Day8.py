@@ -20,7 +20,6 @@ def read_input(file_name: str):
     unique_frequencies.remove('.')
     unique_frequencies = {frequency: set() for frequency in unique_frequencies}
 
-
     # Finding all coordinates of each unique frequency
     [unique_frequencies[frequency].add((y_idx, x_idx)) for frequency in unique_frequencies
      for y_idx, line in enumerate(return_list) for x_idx, chara in enumerate(line) if chara == frequency]
@@ -36,7 +35,7 @@ def gen_all_antinodes(mapping: list, unique_frequencies: dict, shape_of_mapping:
         antinodes[frequency] = set((2 * x[0] - y[0], 2 * x[1] - y[1]) for x, y in permutations(coordinates, 2))
 
         # Removing any antinodes that are out of bounds
-        [antinodes[anti_freq].remove(pop_coord) for anti_freq, anti_coord in antinodes.items() for pop_coord in list(anti_coord) if (not (0 <= pop_coord[0] < shape_of_mapping[0]) or (not 0 <= pop_coord[1] < shape_of_mapping[1]))]
+        [antinodes[anti_freq].remove(pop_coord) for anti_freq, anti_coord in antinodes.items() for pop_coord in list(anti_coord) if not ((0 <= pop_coord[0] < shape_of_mapping[0]) and (0 <= pop_coord[1] < shape_of_mapping[1]))]
 
     master_antinodes = set()
     [master_antinodes.update(anti_coords) for anti_coords in antinodes.values()]
