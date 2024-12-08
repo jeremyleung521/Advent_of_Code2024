@@ -41,17 +41,17 @@ def return_top3(input_list):
 
 def main():
     ## Part 1
-    b = read_input("DayX_test_input.txt")
-    # b = read_input("DayX_input.txt")
-    answer = return_max(b)
+    a = read_input("DayX_test_input.txt")
+    # a = read_input("DayX_input.txt")
+    answer = return_max(a)
     print(f'Elf {answer[1]+1} has {answer[0]} calories worth of food.')
 
 
 def main2():
     # Part 2
-    a = read_input("DayX_test_input.txt")
-    # a = read_input("DayX_input.txt")
-    answer2 = return_top3(a)
+    b = read_input("DayX_test_input.txt")
+    # b = read_input("DayX_input.txt")
+    answer2 = return_top3(b)
     print(f'Elves {answer2[1] + 1} have {answer2[0]} calories worth of food.')
 
 
