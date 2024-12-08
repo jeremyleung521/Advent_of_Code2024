@@ -31,7 +31,6 @@ def read_input(file_name: str):
 
 def gen_all_antinodes(mapping: list, unique_frequencies: dict, shape_of_mapping: list):
     antinodes = {}
-    # print(unique_frequencies)
 
     for frequency, coordinates in unique_frequencies.items():
         antinodes[frequency] = set((2 * x[0] - y[0], 2 * x[1] - y[1]) for x, y in permutations(coordinates, 2))
@@ -41,22 +40,6 @@ def gen_all_antinodes(mapping: list, unique_frequencies: dict, shape_of_mapping:
 
     master_antinodes = set()
     [master_antinodes.update(anti_coords) for anti_coords in antinodes.values()]
-    # master_coords = set()
-    # [master_coords.update(coords) for coords in unique_frequencies.values()]
-
-    # print(f'{master_antinodes=}')
-    # print(f'{master_coords=}')
-
-    # sum([i is True for i in [antinodes[anti_freq].remove(pop_coord) for anti_freq, anti_coord in coordinates for pop_coord in anti_coord]])
-
-    # for b in master_antinodes:
-    #     if b not in master_coords:
-    #         mapping[b[0]][b[1]] = '#'
-    #
-    # print(mapping)
-
-    # excluding overlaps
-    # sum([1 for anti_coord in master_antinodes if (anti_coord not in master_coords)])
 
     return antinodes, len(master_antinodes)
 
@@ -77,29 +60,9 @@ def gen_resonant_nodes(mapping: list, unique_frequencies: dict, shape_of_mapping
                     antinodes[frequency].add((curr_x, curr_y))
                 else:
                     break
-            #antinodes[frequency] = set((2 * x[0] - y[0], 2 * x[1] - y[1]) for x, y in permutations(coordinates, 2))
-
-        # Removing any antinodes that are out of bounds
-        #[antinodes[anti_freq].remove(pop_coord) for anti_freq, anti_coord in antinodes.items() for pop_coord in list(anti_coord) if (not (0 <= pop_coord[0] < shape_of_mapping[0]) or (not 0 <= pop_coord[1] < shape_of_mapping[1]))]
 
     master_antinodes = set()
     [master_antinodes.update(anti_coords) for anti_coords in antinodes.values()]
-    #master_coords = set()
-    #[master_coords.update(coords) for coords in unique_frequencies.values()]
-
-    # print(f'{master_antinodes=}')
-    # print(f'{master_coords=}')
-
-    # sum([i is True for i in [antinodes[anti_freq].remove(pop_coord) for anti_freq, anti_coord in coordinates for pop_coord in anti_coord]])
-
-    # for b in master_antinodes:
-    #     if b not in master_coords:
-    #         mapping[b[0]][b[1]] = '#'
-    #
-    # print(mapping)
-
-    # excluding overlaps
-    # sum([1 for anti_coord in master_antinodes if (anti_coord not in master_coords)])
 
     return antinodes, len(master_antinodes)
 
